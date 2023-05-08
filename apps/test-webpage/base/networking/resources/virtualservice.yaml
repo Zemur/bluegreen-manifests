@@ -1,0 +1,19 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: test-webpage
+spec:
+  hosts:
+    - "*"
+  gateways:
+    - test-webpage-gateway
+  http:
+    - route:
+      - destination:
+          host: test-webpage
+          subset: blue
+        weight: 50
+      - destination:
+          host: test-webpage
+          subset: green
+        weight: 50

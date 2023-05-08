@@ -1,0 +1,15 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+nameSuffix: -green
+namespace: test-webpage
+
+resources:
+  - ../../base/app
+
+patchesStrategicMerge:
+- patches/deployment.yaml
+
+images:
+- name: test-webpage
+  newTag: green

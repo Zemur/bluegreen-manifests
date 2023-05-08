@@ -1,0 +1,13 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: test-webpage
+spec:
+  host: test-webpage
+  subsets:
+    - name: blue
+      labels:
+        stack: blue
+    - name: green
+      labels:
+        stack: green

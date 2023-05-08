@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-webpage-deployment
+spec:
+  selector:
+    matchLabels:
+      app: test-webpage
+      stack: blue
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: test-webpage
+        stack: blue
+    spec:
+      containers:
+        - name: test-webpage
+          image: test-webpage:blue
+          imagePullPolicy: Never
+          ports:
+          - containerPort: 80

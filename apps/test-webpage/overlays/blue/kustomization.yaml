@@ -1,0 +1,17 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+nameSuffix: -blue
+namespace: test-webpage
+commonLabels:
+  stack: blue
+
+resources:
+- ../../base/app/
+
+patchesStrategicMerge:
+- patches/deployment.yaml
+
+images:
+- name: test-webpage
+  newTag: blue
