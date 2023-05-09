@@ -1,1 +1,38 @@
-placeholder
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: test-webpage
+spec:
+  generators:
+    - list:
+        elements:
+          - cluster: https://kubernetes.default.svc
+            stack: green
+            project: test-webpage
+  template:
+    metadata:
+      name: 'test-webpage-{{ stack }}'
+      finalizers:
+        - resources-finalizer.argocd.argoproj.io
+    spec:
+      project: '{{ project }}'
+      syncPolicy:
+        preserveResourcesOnDeletion: true
+        syncOptions:
+          - CreateNamespace=true
+          - Validate=false
+          - Prune=false
+        retry:
+          limit: 5
+          backoff:
+            duration: 5s
+            factor: 2
+            maxDuration: 3m
+      source:
+        repoURL: https://github.com/sean-pi/bluegreen-manifests
+        path: apps/test-webpage/overlays/{{ stack }}
+        targetRevision: main
+      destination:
+        name:  '{{cluster_name}}'
+        namespace: test-webpage
+
