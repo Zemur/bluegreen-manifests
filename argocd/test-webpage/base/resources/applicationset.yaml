@@ -29,7 +29,7 @@ spec:
             factor: 2
             maxDuration: 3m
       source: 
-      repoURL: ssh://git@github.com:sean-pi/bluegreen-manifests.git
+        repoURL: 'git@github.com:sean-pi/bluegreen-manifests.git'
         path: apps/test-webpage/overlays/{{ stack }}
         targetRevision: main
       destination:

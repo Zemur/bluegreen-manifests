@@ -11,5 +11,6 @@ patchesStrategicMerge:
 - patches/deployment.yaml
 
 images:
-- name: docker.io/shardy107/bluegreen
-  newTag: green
+  - name: test-webpage
+    newName: docker.io/shardy107/bluegreen
+    newTag: green
