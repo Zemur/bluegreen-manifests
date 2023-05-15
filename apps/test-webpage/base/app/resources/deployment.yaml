@@ -11,3 +11,7 @@ spec:
     metadata:
       labels:
         app: test-webpage
+    containers:
+      imagePullSecrets:
+        - name: regcred
+      imagePullPolicy: Always

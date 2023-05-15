@@ -17,6 +17,5 @@ spec:
       containers:
         - name: test-webpage
           image: test-webpage:green
-          imagePullPolicy: Never
           ports:
           - containerPort: 80
