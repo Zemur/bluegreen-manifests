@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: test-webpage-deployment
+  name: test-webpage
 spec:
   selector:
     matchLabels:
