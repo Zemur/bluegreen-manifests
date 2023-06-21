@@ -1,0 +1,39 @@
+apiVersion: networking.istio.io/v1beta1
+kind: Gateway
+metadata:
+  name: argocd-bluegreen
+spec:
+  selector:
+    app: istio-ingressgateway
+  servers:
+  - hosts:
+    - argo-bluegreen.non-prod.examplecompany
+    port:
+      name: http
+      number: 80
+      protocol: HTTP
+---
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: argocd-bluegreen
+spec:
+  gateways:
+  - argocd-bluegreen
+  hosts:
+  - '*'
+  http:
+  - match:
+    - uri:
+        prefix: /
+    route:
+    - destination:
+        host: argocd-server.argocd-blue.svc.cluster.local
+        port:
+          number: 80
+      weight: 100
+    - destination:
+        host: argocd-server.argocd-green.svc.cluster.local
+        port:
+          number: 80
+      weight: 0

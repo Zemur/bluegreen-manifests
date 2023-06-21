@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-cmd-params-cm
+  labels:
+    app.kubernetes.io/part-of: argocd
+data:
+  controller.status.processors: "75"
+  controller.operation.processors: "30"
+  reposerver.parallelism.limit: "50"

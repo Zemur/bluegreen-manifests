@@ -1,0 +1,7 @@
+apiVersion: v1
+data:
+  policy.csv: |
+    p, role:example-team, applications, create, example-team/*, allow
+    p, role:example-team, applications, get, example-team/*, allow
+    p, role:example-team, projects, get, example-team, allow
+    g, example:team, role:example-team

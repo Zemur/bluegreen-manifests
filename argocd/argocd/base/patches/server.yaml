@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: argocd-server
+spec:
+  replicas: 3
+  template:
+    metadata:
+        annotations:
+          ad.datadoghq.com/argocd-server.checks: |
+            {
+              "argocd": {
+                "init_config": {},
+                "instances": [
+                  {
+                    "api_server_endpoint": "http://%%host%%:8083/metrics"
+                  }
+                ]
+              }
+            }    
+    spec:
+      containers:
+        - name: argocd-server
+          command:
+            - argocd-server
+            - '--redis'
+            - 'argocd-redis-ha-haproxy:6379'
+            - '--insecure'

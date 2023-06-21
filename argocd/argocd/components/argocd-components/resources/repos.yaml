@@ -1,0 +1,18 @@
+---
+# ArgoCD credentials template
+apiVersion: v1
+kind: Secret
+metadata:
+  name: gh-example-credentials
+  namespace: argocd
+  labels:
+    argocd.argoproj.io/secret-type: repo-creds
+  annotations:
+    avp.kubernetes.io/path: "examplecompany/data/infrastructure/argocd/repo-credentials/example_credentials"
+stringData:
+  url: https:/example.com/git-repo-url.git
+  type: git
+  githubAppID:  <githubAppID>
+  githubAppInstallationID: <githubAppInstallationID>
+  githubAppPrivateKey: <githubAppPrivateKey>
+

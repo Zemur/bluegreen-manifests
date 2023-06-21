@@ -1,0 +1,26 @@
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: "demo-cluster"
+  labels:
+    argocd.argoproj.io/secret-type: cluster
+    env: demo
+    project: example_project
+    cloud: gcp
+type: Opaque
+stringData:
+  name: "demo-cluster"
+  server: "<path:examplecompany/data/infrastructure/argocd-clusters/demo/demo-cluster#url>"
+  config: |
+    {
+      "execProviderConfig": {
+        "command": "argocd-k8s-auth",
+        "args": ["gcp"],
+        "apiVersion": "client.authentication.k8s.io/v1beta1"
+      },
+      "tlsClientConfig": {
+        "insecure": false,
+        "caData": "<path:examplecompany/data/infrastructure/argocd-clusters/demo/demo-cluster#caData>"
+      }
+    }

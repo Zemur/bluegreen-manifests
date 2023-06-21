@@ -1,0 +1,21 @@
+apiVersion: kustomize.config.k8s.io/v1alpha1
+kind: Component
+
+resources:
+  - resources/vault-auth-secret.yaml
+  - resources/clusters/demo/demo_cluster.yaml
+  - resources/helm-repo-secret.yaml
+  - resources/projects.yaml
+  - resources/repos.yaml
+
+patchesStrategicMerge:
+  - patches/rbac-cm.yaml
+  - patches/cm.yaml
+  - patches/repo-server.yaml
+  - patches/server.yaml
+  - patches/secret.yaml
+  - patches/service-account.yaml
+  - patches/application-server.yaml
+  - patches/argocd-cmd-params-cm.yaml
+  - patches/notification-configmap.yaml
+  - patches/slack-token-secret.yaml
