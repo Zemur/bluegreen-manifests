@@ -4,11 +4,8 @@ kind: Kustomization
 namespace: argocd-green
 
 resources:
-    - https://raw.githubusercontent.com/argoproj/argo-cd/v2.4.17/manifests/ha/install.yaml
+  - https://raw.githubusercontent.com/argoproj/argo-cd/v2.4.17/manifests/ha/install.yaml
 
 components:
   - ../../components/argocd-components/
-
-patchesStrategicMerge:
-  - patches/clusterrolebinding.yaml
 

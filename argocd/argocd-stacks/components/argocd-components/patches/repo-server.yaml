@@ -38,9 +38,6 @@ spec:
           - mountPath: /usr/local/bin/yq
             name: custom-tools
             subPath: yq
-          - mountPath: /usr/local/bin/ejson
-            name: custom-tools
-            subPath: ejson
         envFrom:
           - secretRef:
               name: argocd-vault-plugin-credentials

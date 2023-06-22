@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
   - ../../../../base/green
   - ../../../../base/argocd-bluegreen-ingress
+
 patches:
   - target:
       version: v1
@@ -12,7 +13,7 @@ patches:
     patch: |-
       - op: add
         path: /metadata/annotations/iam.gke.io~1gcp-service-account
-        value: argocd-server@non-prod-internal-svcs.iam.gserviceaccount.com
+        value: argocd-server@example-gcp-project.iam.gserviceaccount.com
   - target:
       version: v1
       kind: ServiceAccount
@@ -20,4 +21,5 @@ patches:
     patch: |-
       - op: add
         path: /metadata/annotations/iam.gke.io~1gcp-service-account
-        value: argocd-application-controller@non-prod-internal-svcs.iam.gserviceaccount.com
+        value: argocd-application-controller@example-gcp-project.iam.gserviceaccount.com
+  - patches/clusterrolebinding.yaml

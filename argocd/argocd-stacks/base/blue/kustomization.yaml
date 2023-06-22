@@ -8,6 +8,3 @@ resources:
 
 components:
   - ../../components/argocd-components/
-
-patchesStrategicMerge:
-  - patches/clusterrolebinding.yaml

@@ -2,9 +2,12 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-  - ../../../../base/blue
-  - ../../../../base/argocd-bluegreen-ingress
+  - ../../base/blue
+  - ../../base/argocd-bluegreen-ingress
 
+patches:
+  - patches/clusterrolebinding.yaml
+  
 patches:
   - target:
       version: v1
@@ -13,7 +16,7 @@ patches:
     patch: |-
       - op: add
         path: /metadata/annotations/iam.gke.io~1gcp-service-account
-        value: argocd-server@non-prod-internal-svcs.iam.gserviceaccount.com
+        value: argocd-server@example-gcp-project.iam.gserviceaccount.com
   - target:
       version: v1
       kind: ServiceAccount
@@ -21,4 +24,4 @@ patches:
     patch: |-
       - op: add
         path: /metadata/annotations/iam.gke.io~1gcp-service-account
-        value: argocd-application-controller@non-prod-internal-svcs.iam.gserviceaccount.com
+        value: argocd-application-controller@example-gcp-project.iam.gserviceaccount.com

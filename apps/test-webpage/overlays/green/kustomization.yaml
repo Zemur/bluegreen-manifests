@@ -7,7 +7,7 @@ namespace: test-webpage
 resources:
   - ../../base/app
 
-patchesStrategicMerge:
+patches:
 - patches/deployment.yaml
 
 images:

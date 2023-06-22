@@ -6,9 +6,9 @@ spec:
   generators:
   - list:
       elements:
-      - cluster: in-cluster
+      - cluster: example-cluster
         stack: green
-      - cluster: in-cluster
+      - cluster: example-cluster
         stack: blue
   template:
     metadata:
@@ -29,7 +29,7 @@ spec:
             factor: 2
             maxDuration: 3m
       source: 
-        repoURL: 'git@github.com:sean-pi/bluegreen-manifests.git'
+        repoURL: 'git@github.com:Zemur/bluegreen-manifests.git'
         path: apps/test-webpage/overlays/{{ stack }}
         targetRevision: main
       destination:
