@@ -88,5 +88,3 @@ foreach ($color in @('blue', 'green')) {
 # Apply Manifests
 Write-Output "Applying Manifests"
 $argoInstall.ApplyKustomization()
-
-
