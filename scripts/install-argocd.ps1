@@ -6,8 +6,6 @@ class ArgoCDInstall {
     [string]$ArgoAppSetsPath
 
     ArgoCDInstall () {
-        ## Default Constructor
-        Write-Host "Using default constructor"
         $this.GitRootDir = git rev-parse --show-toplevel
         $this.ManifestsToApply = [System.Collections.ArrayList]::new()
         $this.ArgoStacksPath = "$($this.GitRootDir)/argocd/argocd-stacks"
@@ -15,8 +13,6 @@ class ArgoCDInstall {
     }
 
     ArgoCDInstall ([string] $GitRootDir, $ArgoStacksPath, $ArgoAppSetsPath) {
-        Write-Host "Using overloaded constructor"
-        ## Overloaded constructor to allow specification of stacks and appsets
         $this.GitRootDir = git rev-parse --show-toplevel
         $this.ManifestsToApply = [System.Collections.ArrayList]::new()
         $this.ArgoStacksPath = "$($this.GitRootDir)/${ArgoStacksPath}"
