@@ -12,7 +12,6 @@ patchesStrategicMerge:
   - patches/application-server.yaml
   - patches/rbac-cm.yaml
   - patches/repo-server.yaml
-  - patches/secret.yaml
   - patches/server.yaml
   - patches/service-account.yaml
   - patches/slack-token-secret.yaml
